@@ -8,3 +8,6 @@ export const projectIdentity = {
 export function getProjectName(): string {
   return projectIdentity.name;
 }
+
+export { DiagramIrV01aSchema } from "./ir/schema.js";
+export type { DiagramIrV01a, EdgeV01a, MetadataV01a, NodeRole, NodeV01a } from "./ir/types.js";

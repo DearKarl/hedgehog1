@@ -62,6 +62,30 @@ describe("Diagram IR v0.1a schema", () => {
     expectInvalid(withoutTitle, "required", "");
   });
 
+  it("rejects diagram ids that are not SVG-safe", async () => {
+    expectInvalid(
+      await readFixtureJson("invalid/invalid-diagram-id.diagram.json"),
+      "pattern",
+      "/id"
+    );
+  });
+
+  it("rejects node ids that are not SVG-safe", async () => {
+    expectInvalid(
+      await readFixtureJson("invalid/invalid-node-id.diagram.json"),
+      "pattern",
+      "/nodes/0/id"
+    );
+  });
+
+  it("rejects edge ids that are not SVG-safe", async () => {
+    expectInvalid(
+      await readFixtureJson("invalid/invalid-edge-id.diagram.json"),
+      "pattern",
+      "/edges/0/id"
+    );
+  });
+
   it("rejects empty evidenceRef values", async () => {
     const document = await readFixtureJson("valid/simple-dataflow.diagram.json");
     const withEmptyEvidenceRef = structuredClone(document) as {

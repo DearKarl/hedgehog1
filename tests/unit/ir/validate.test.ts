@@ -145,6 +145,30 @@ describe("Diagram IR v0.1a validation", () => {
     }
   });
 
+  it("returns IR_INVALID_ID for diagram ids with spaces", async () => {
+    await expectInvalidFixture(
+      "invalid/invalid-diagram-id.diagram.json",
+      ErrorCodes.IR_INVALID_ID,
+      "/id"
+    );
+  });
+
+  it("returns IR_INVALID_ID for node ids with spaces", async () => {
+    await expectInvalidFixture(
+      "invalid/invalid-node-id.diagram.json",
+      ErrorCodes.IR_INVALID_ID,
+      "/nodes/0/id"
+    );
+  });
+
+  it("returns IR_INVALID_ID for edge ids with spaces", async () => {
+    await expectInvalidFixture(
+      "invalid/invalid-edge-id.diagram.json",
+      ErrorCodes.IR_INVALID_ID,
+      "/edges/0/id"
+    );
+  });
+
   it("sorts diagnostics by path, code, and message", () => {
     const diagnostics: Diagnostic[] = [
       {

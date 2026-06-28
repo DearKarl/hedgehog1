@@ -9,6 +9,7 @@
     },
     "id": {
       "minLength": 1,
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
       "type": "string"
     },
     "title": {
@@ -31,6 +32,7 @@
         "properties": {
           "id": {
             "minLength": 1,
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
             "type": "string"
           },
           "label": {
@@ -73,6 +75,7 @@
         "properties": {
           "id": {
             "minLength": 1,
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
             "type": "string"
           },
           "from": {

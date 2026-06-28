@@ -1,6 +1,7 @@
 import { Type } from "@sinclair/typebox";
 
 const NonEmptyString = Type.String({ minLength: 1 });
+const SvgSafeId = Type.String({ minLength: 1, pattern: "^[A-Za-z][A-Za-z0-9_-]*$" });
 
 export const NodeRoleSchema = Type.Union([
   Type.Literal("source"),
@@ -12,7 +13,7 @@ export const NodeRoleSchema = Type.Union([
 
 export const NodeV01aSchema = Type.Object(
   {
-    id: NonEmptyString,
+    id: SvgSafeId,
     label: NonEmptyString,
     role: NodeRoleSchema
   },
@@ -21,7 +22,7 @@ export const NodeV01aSchema = Type.Object(
 
 export const EdgeV01aSchema = Type.Object(
   {
-    id: NonEmptyString,
+    id: SvgSafeId,
     from: NonEmptyString,
     to: NonEmptyString,
     label: Type.Optional(Type.String()),
@@ -35,7 +36,7 @@ export const MetadataV01aSchema = Type.Record(Type.String(), Type.Unknown());
 export const DiagramIrV01aSchema = Type.Object(
   {
     irVersion: Type.Literal("0.1a"),
-    id: NonEmptyString,
+    id: SvgSafeId,
     title: NonEmptyString,
     kind: Type.Literal("dataflow"),
     direction: Type.Literal("left-to-right"),

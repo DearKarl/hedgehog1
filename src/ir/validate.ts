@@ -154,6 +154,17 @@ function mapAjvError(error: ErrorObject): Diagnostic[] {
     ];
   }
 
+  if (error.keyword === "pattern" && error.instancePath.endsWith("/id")) {
+    return [
+      makeSchemaDiagnostic(
+        ErrorCodes.IR_INVALID_ID,
+        error.instancePath,
+        "Invalid id.",
+        "IDs must match ^[A-Za-z][A-Za-z0-9_-]*$."
+      )
+    ];
+  }
+
   if (error.keyword === "const" && error.instancePath === "/kind") {
     return [
       makeSchemaDiagnostic(

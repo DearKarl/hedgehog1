@@ -11,6 +11,7 @@
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:integration": "vitest run tests/integration/**/*.test.ts",
     "lint": "eslint .",
     "format:check": "prettier . --check",
     "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm format:check"

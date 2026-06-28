@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Hedgehog One v0.1a deterministic Diagram IR to SVG compiler.",
+  "bin": {
+    "hedgehog1": "./dist/cli.js"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",

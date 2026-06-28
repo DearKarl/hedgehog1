@@ -12,5 +12,18 @@ Current development is focused on the Diagram IR -> SVG compiler foundation for 
 
 ```sh
 pnpm install
+pnpm build
 pnpm check
 ```
+
+## CLI
+
+After building, the v0.1a CLI exposes only three commands:
+
+```sh
+hedgehog1 validate input.diagram.json
+hedgehog1 compile input.diagram.json -o output.svg
+hedgehog1 check input.diagram.json
+```
+
+`validate` parses and validates Diagram IR. `compile` writes deterministic SVG output. `check` validates, compiles in memory twice, and verifies byte-for-byte deterministic output.
